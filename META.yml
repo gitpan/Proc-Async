@@ -30,9 +30,9 @@ requires:
   strict: 0
   warnings: 0
 resources:
-  bugtracker: http://github.com/me/Proc-Async/issues
+  bugtracker: http://github.com/msenger/Proc-Async/issues
   homepage: http://search.cpan.org/dist/Proc-Async
-version: 0.1.1
+version: 0.1.2
 x_Dist_Zilla:
   perl:
     version: 5.014002
