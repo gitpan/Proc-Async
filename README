@@ -2,7 +2,7 @@ NAME
     Proc::Async - Running and monitoring processes asynchronously
 
 VERSION
-    version 0.1.2
+    version 0.1.3
 
 SYNOPSIS
        use Proc::Async;

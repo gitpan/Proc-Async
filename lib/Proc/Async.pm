@@ -11,7 +11,7 @@ use warnings;
 use strict;
 package Proc::Async;
 
-our $VERSION = '0.1.2'; # VERSION
+our $VERSION = '0.1.3'; # VERSION
 
 use Carp;
 use File::Temp qw{ tempdir };
@@ -509,7 +509,7 @@ Proc::Async - Running and monitoring processes asynchronously
 
 =head1 VERSION
 
-version 0.1.2
+version 0.1.3
 
 =head1 SYNOPSIS
 

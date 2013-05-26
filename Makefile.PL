@@ -34,11 +34,12 @@ my %WriteMakefileArgs = (
   },
   "TEST_REQUIRES" => {
     "File::Basename" => 0,
+    "File::Which" => 0,
     "FindBin" => 0,
     "Getopt::Long" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.1.2",
+  "VERSION" => "0.1.3",
   "test" => {
     "TESTS" => "t/*.t"
   }

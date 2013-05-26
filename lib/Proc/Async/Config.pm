@@ -13,7 +13,7 @@ package Proc::Async::Config;
 
 use Carp;
 
-our $VERSION = '0.1.2'; # VERSION
+our $VERSION = '0.1.3'; # VERSION
 
 #-----------------------------------------------------------------
 # Constructor. It reads a given configuration file (but does not
@@ -158,7 +158,7 @@ Proc::Async::Config - Configuration helper
 
 =head1 VERSION
 
-version 0.1.2
+version 0.1.3
 
 =head1 AUTHOR
 
