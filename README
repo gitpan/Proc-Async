@@ -2,7 +2,7 @@ NAME
     Proc::Async - Running and monitoring processes asynchronously
 
 VERSION
-    version 0.1.3
+    version 0.2.0
 
 SYNOPSIS
        use Proc::Async;
@@ -59,7 +59,7 @@ METHODS
     explained later in this documentation but it is not important for the
     module usage).
 
-  start($args) *or* start(@args)
+  start($args [,$options]) *or* start(@args, [$options])
     This method starts an external program, makes a daemon process from it,
     does not wait for its completion and returns a token, a job ID. This
     token will be used as an argument in all other methods. Therefore, there
@@ -76,6 +76,37 @@ METHODS
     or
 
        my $jobid = Proc::Async->start ( [qw{ wget -O cpan.index.html http://search.cpan.org/index.html }] );
+
+    If the given array of arguments has only one element, it is still
+    considered as an array. Therefore, you cannot use a single string
+    representing the full command-line:
+
+       # this will not work
+       $jobid = start ("date -u");
+
+    This is a feature not a bug. It prevents to let the shell interprets the
+    meta-characters inside the arguments. More about it in the Perl's
+    documentation (try: "perldoc -f exec"). But sometimes you are willing to
+    sacrifice safety and to let a shell to act for your benefit. An example
+    is the usage of a pipe character in the command line. In order to allow
+    it, you need to specify an option "Proc::Async::ALLOW_SHELL" in the
+    start() method:
+
+       # this works
+       $jobid = start ("date -u", { Proc::Async::ALLOW_SHELL() => 1 });
+
+       # ...and this works, as well
+       # (it prints number 3 to the standard output)
+       $jobid = start ("echo one two three | wc -w", { Proc::Async::ALLOW_SHELL() => 1 });
+
+    The options (so far only one is recognized) are given as a hashref that
+    is the last argument of the "start()" method. The keys of this hash are
+    defined as constants in this module:
+
+       use constant {
+          ALLOW_SHELL => 'ALLOW_SHELL',
+
+       };
 
     For each job, this method creates a temporary directory (within your
     system temporary directory, which is, on Unix system, usually "/tmp")
